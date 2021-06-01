@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    image: nginx
+    volumes:
+      - ./jwks.json:/usr/share/nginx/html/.well-known/jwks.json
+      - ./rootCA.crt:/etc/nginx/rootCA.crt
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./client.crt:/etc/nginx/client.crt
+      - ./client.key:/etc/nginx/client.key
+      - ./ssl_passwords.txt:/etc/nginx/ssl_passwords.txt
+    ports:
+      - "8081:80"
