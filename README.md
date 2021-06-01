@@ -1,4 +1,4 @@
-#Demo mTLS via NGINX
+# Demo mTLS via NGINX
 
 ## Quick start
 
@@ -20,7 +20,7 @@ a. http://localhost:8081/sample-jwt/untrust
 
 a. http://localhost:8081/sample-jwt/trust
 
-##Generate Server TLS 
+## Generate Server TLS 
 
 docker run -it --rm -v "C:\your_path:/openssl-certs" rnix/openssl-gost
 
@@ -57,13 +57,13 @@ openssl pkcs12 -export -out localhost.p12 -name "localhost" -inkey localhost.key
 
 keytool -importkeystore -srckeystore localhost.p12 -srcstoretype PKCS12 -destkeystore keystore.jks -deststoretype JKS
 
-##Create Truststore
+## Create Truststore
 
 ### Need only CA Root
 
 keytool -import -trustcacerts -noprompt -alias ca -ext san=dns:localhost,ip:127.0.0.1 -file rootCA.crt -keystore truststore.jks
 
-##Create Client TLS 
+## Create Client TLS 
 
 ### Test API Gateway
 
